@@ -5,33 +5,29 @@ https://github.com/StackExchange/blackbox#alternatives
 
 
 ### Create a repository with your secrets
+
+1. init a new secret blackbox
 ```
-export PROJECT=foo
+export PROJECT=agora
+export BB_USER=quentin@agora
 export SCOPE=staging
+git clone https://github.com/gaultierq/blackbox_template.git ${PROJECT}_${SCOPE}_secrets
+cd ${PROJECT}_${SCOPE}_secrets
+git remote rm origin
+
+export BLACKBOXDATA=$SCOPE
+yes | blackbox_initialize
+echo "#secret file for #SCOPE" > $SCOPE.env
+echo $BB_USER | blackbox_register_new_file $SCOPE.env
+git add .
 ```
+
+& publish on your git repo
+
 
 1. obtain a pub/priv key for this project
    your email could be *firstname@foo.com*
    your password could be `openssl rand -base64 30`
-```
-gpg --gen-key
-```
+`gpg --gen-key`
 
 store the private key and password somewhere secure
-
-
-2. creating secrets for this project-scope
-```
-git clone https://github.com/gaultierq/blackbox_template.git $PROJECT_$SCOPE_secrets
-cd $PROJECT_$SCOPE_secrets
-git remote rm origin
-```
-
-3. init blackbox and add a file name
-```
-blackbox_initialize
-echo "#envfile for project_name" > .env
-blackbox_register_new_file .env
-```
-
-4. publish on github or gitlab
