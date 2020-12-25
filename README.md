@@ -1,20 +1,37 @@
-# Create a repository with your secrets
 
-`mkdir project_secrets && cd project_secrets`
-
-## gen a strong password
-`openssl rand -base64 30`
-
-## gen  a pub/priv key; save the priv key securely; use for email firstname@project.com
-`gpg --gen-key`
-
-## download and install blackbox
+### Prerequisite
+1. download and install blackbox
 https://github.com/StackExchange/blackbox#alternatives
 
-## init blackbox
+
+### Create a repository with your secrets
+```
+EXPORT PROJECT=FOO
+EXPORT SCOPE=STAGING
+```
+
+1. obtain a pub/priv key for this project
+   your email could be *firstname@foo.com*
+   your password could be `openssl rand -base64 30`
+```
+gpg --gen-key
+```
+
+store the private key and password somewhere secure
+
+
+2. creating secrets for this project-scope
+```
+git clone https://github.com/gaultierq/blackbox_template.git $PROJECT_$SCOPE_secrets
+cd $PROJECT_$SCOPE_secrets
+git remote rm origin
+```
+
+3. init blackbox and add a file name
 ```
 blackbox_initialize
 echo "#envfile for project_name" > .env
 blackbox_register_new_file .env
-git push
 ```
+
+4. publish on github or gitlab
