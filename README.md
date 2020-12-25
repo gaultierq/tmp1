@@ -9,7 +9,6 @@ https://github.com/StackExchange/blackbox#alternatives
 1. init a new secret blackbox
 ```
 export PROJECT=agora
-export BB_USER=quentin@agora
 export SCOPE=staging
 git clone https://github.com/gaultierq/blackbox_template.git ${PROJECT}_secrets
 cd ${PROJECT}_secrets
@@ -18,7 +17,7 @@ git remote rm origin
 export BLACKBOXDATA=$SCOPE
 yes | blackbox_initialize
 echo "#secret file for #SCOPE" > $SCOPE.env
-echo $BB_USER | blackbox_register_new_file $SCOPE.env
+blackbox_register_new_file $SCOPE.env
 git add .
 ```
 
