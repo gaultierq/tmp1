@@ -6,8 +6,8 @@ https://github.com/StackExchange/blackbox#alternatives
 
 ### Create a repository with your secrets
 ```
-EXPORT PROJECT=FOO
-EXPORT SCOPE=STAGING
+export PROJECT=foo
+export SCOPE=staging
 ```
 
 1. obtain a pub/priv key for this project
