@@ -11,8 +11,8 @@ https://github.com/StackExchange/blackbox#alternatives
 export PROJECT=agora
 export BB_USER=quentin@agora
 export SCOPE=staging
-git clone https://github.com/gaultierq/blackbox_template.git ${PROJECT}_${SCOPE}_secrets
-cd ${PROJECT}_${SCOPE}_secrets
+git clone https://github.com/gaultierq/blackbox_template.git ${PROJECT}_secrets
+cd ${PROJECT}_secrets
 git remote rm origin
 
 export BLACKBOXDATA=$SCOPE
