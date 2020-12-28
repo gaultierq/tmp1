@@ -16,6 +16,9 @@ git remote rm origin
 
 export BLACKBOXDATA=$SCOPE
 yes | blackbox_initialize
+```
+add a file
+```
 echo "#secret file for #SCOPE" > $SCOPE.env
 blackbox_register_new_file $SCOPE.env
 git add .
